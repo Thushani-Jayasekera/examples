@@ -1,0 +1,9 @@
+[package]
+org = "thushani"
+name = "bal_proxy_1700546933325"
+version = "0.1.0"
+distribution = "2201.5.1"
+
+[build-options]
+observabilityIncluded = true
+cloud="docker"

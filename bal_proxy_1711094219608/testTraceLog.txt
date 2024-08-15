@@ -1,0 +1,19 @@
+[2024-08-15 12:12:39,869] TRACE {http.tracelog.downstream} - [id: 0x87d677de] REGISTERED  
+[2024-08-15 12:12:39,869] TRACE {http.tracelog.downstream} - [id: 0xcf8f7d11] REGISTERED  
+[2024-08-15 12:12:39,902] TRACE {http.tracelog.downstream} - [id: 0x87d677de, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61579] ACTIVE  
+[2024-08-15 12:12:39,903] TRACE {http.tracelog.downstream} - [id: 0xcf8f7d11, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61578] ACTIVE  
+[2024-08-15 12:12:39,913] TRACE {http.tracelog.downstream} - [id: 0xcf8f7d11, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61578] READ COMPLETE  
+[2024-08-15 12:12:39,916] TRACE {http.tracelog.downstream} - [id: 0xcf8f7d11, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61578] INACTIVE  
+[2024-08-15 12:12:39,916] TRACE {http.tracelog.downstream} - [id: 0xcf8f7d11, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61578] UNREGISTERED  
+[2024-08-15 12:12:39,920] TRACE {http.tracelog.downstream} - [id: 0x87d677de, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61579] INBOUND: DefaultFullHttpRequest(decodeResult: failure(io.netty.handler.codec.http.TooLongHttpLineException: An HTTP line is larger than 4096 bytes.), version: HTTP/1.0, content: UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 0, widx: 0, cap: 0))
+GET /bad-request HTTP/1.0, 0B  
+[2024-08-15 12:12:39,932] TRACE {http.tracelog.downstream} - [id: 0x87d677de, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61579] OUTBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.0)
+HTTP/1.0 414 Request-URI Too Long
+content-length: 0
+connection: close
+server: ballerina  
+[2024-08-15 12:12:39,936] TRACE {http.tracelog.downstream} - [id: 0x87d677de, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61579] FLUSH  
+[2024-08-15 12:12:39,939] TRACE {http.tracelog.downstream} - [id: 0x87d677de, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61579] CLOSE  
+[2024-08-15 12:12:39,940] TRACE {http.tracelog.downstream} - [id: 0x87d677de, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61579] READ COMPLETE  
+[2024-08-15 12:12:39,941] TRACE {http.tracelog.downstream} - [id: 0x87d677de, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61579] INACTIVE  
+[2024-08-15 12:12:39,945] TRACE {http.tracelog.downstream} - [id: 0x87d677de, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:61579] UNREGISTERED  

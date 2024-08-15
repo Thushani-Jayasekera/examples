@@ -1,0 +1,153 @@
+openapi: 3.0.1
+info:
+  title: HttpBin with Mediation Policies
+  description: This api is used to connect to the HttpBin with Mediation Policies service
+  version: v1.0
+servers:
+  -
+    url: /
+security:
+  -
+    default: []
+paths:
+#  /users/{user_ids}:
+#    get:
+#      parameters:
+#        - name: user_ids
+#          in: path
+#          required: true
+#          schema:
+#            type: array
+#            items:
+#              type: integer
+#      responses:
+#        "200":
+#          description: ok
+  /foo/*:
+    get:
+      parameters: []
+      responses:
+        "200":
+          description: ok
+      security:
+        -
+          default: []
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-throttling-limit:
+        requestCount: -1
+        unit: MINUTE
+    post:
+      parameters: []
+      responses:
+        "200":
+          description: ok
+      security:
+        -
+          default: []
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-throttling-limit:
+        requestCount: -1
+        unit: MINUTE
+  /number/{Path-Variable}/*:
+    get:
+      parameters:
+        - name: Path-Variable
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: ok
+      security:
+        -
+          default: []
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-throttling-limit:
+        requestCount: -1
+        unit: MINUTE
+  /capital/{Path-Variable}:
+    get:
+      parameters:
+        - name: Path-Variable
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ok
+      security:
+        -
+          default: []
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-throttling-limit:
+        requestCount: -1
+        unit: MINUTE
+    post:
+      parameters:
+        - name: Path-Variable
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ok
+      security:
+        -
+          default: []
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-throttling-limit:
+        requestCount: -1
+        unit: MINUTE
+components:
+  securitySchemes:
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://test.com
+          scopes: {}
+x-wso2-disable-security: false
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: false
+  accessControlAllowOrigins:
+    - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+    - authorization
+    - Access-Control-Allow-Origin
+    - Content-Type
+    - SOAPAction
+    - apikey
+    - API-Key
+    - testKey
+  accessControlAllowMethods:
+    - GET
+    - PUT
+    - POST
+    - DELETE
+    - PATCH
+    - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+    - https://webhook.site/9de578d5-c42c-4370-840d-32bab1b7e4a5
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+    - https://webhook.site/9de578d5-c42c-4370-840d-32bab1b7e4a5
+  type: http
+x-wso2-basePath: /my-base-path
+x-wso2-transports:
+  - http
+  - https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300
