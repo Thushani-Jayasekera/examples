@@ -31,21 +31,5 @@ endpoints:
 dependencies:
     connectionReferences:
     - name: orglevelconnection
-      resourceRef: choreo:///thushani/eg/PROXY/1.0.0/ORGANIZATION
-
-# +optional Defines runtime configurations
-configurations:
-  # +optional List of environment variables to be injected into the component.
-  env:
-    # +required Name of the environment variable
-    - name: CHOREO_ORGLEVELCONNECTION_SERVICEURL
-      # +required value source
-      # Allowed value sources: connectionRef, configForm
-      valueFrom:
-        # +required Choreo connection value source
-        connectionRef:
-          # +required Choreo connection name to refer the value from
-          name: orglevelconnection
-          # +required Choreo connection configuration key to refer the value from
-          key: CHOREO_ORGLEVELCONNECTION_SERVICEURL
+      resourceRef: service:/eg/openaiapi-dev-svc/1.0.0/ORGANIZATION
 
