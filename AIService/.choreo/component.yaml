@@ -1,0 +1,51 @@
+# +required The configuration file schema version
+schemaVersion: 1.2
+
+# +optional Incoming connection details for the component
+endpoints:
+  # +required Unique name for the endpoint.
+  # This name will be used when generating the managed API
+  - name: ai-chat
+    # +optional Display name for the endpoint.
+    displayName: AI Choreo Service
+    # +required Service section has the user service endpoint details
+    service:
+      # +optional Context (base path) of the API that gets exposed via the endpoint.
+      basePath: /ai-chat
+      # +required Numeric port value that gets exposed via the endpoint
+      port: 9090
+    # +required Type of traffic that the endpoint is accepting.
+    # Allowed values: REST, GraphQL, WS, GRPC, TCP, UDP.
+    type: REST
+    # +optional Network level visibilities of the endpoint.
+    # Accepted values: Project|Organization|Public(Default).
+    networkVisibilities: 
+      - Public
+      - Organization
+    # +optional Path to the schema definition file. Defaults to wild card route if not provided
+    # This is only applicable to REST or WS endpoint types.
+    # The path should be relative to the docker context.
+    schemaFilePath: openapi.yaml
+
+# +optional Outgoing connection details for the component.
+dependencies:
+    connectionReferences:
+    - name: orglevelconnection
+      resourceRef: choreo:///thushani/eg/PROXY/1.0.0/ORGANIZATION
+
+# +optional Defines runtime configurations
+configurations:
+  # +optional List of environment variables to be injected into the component.
+  env:
+    # +required Name of the environment variable
+    - name: CHOREO_ORGLEVELCONNECTION_SERVICEURL
+      # +required value source
+      # Allowed value sources: connectionRef, configForm
+      valueFrom:
+        # +required Choreo connection value source
+        connectionRef:
+          # +required Choreo connection name to refer the value from
+          name: orglevelconnection
+          # +required Choreo connection configuration key to refer the value from
+          key: CHOREO_ORGLEVELCONNECTION_SERVICEURL
+

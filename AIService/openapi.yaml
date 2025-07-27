@@ -1,0 +1,210 @@
+openapi: 3.0.3
+info:
+  title: AI Integration Service
+  description: REST API for interacting with OpenAI and generating recommendations.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+
+  /chat:
+    post:
+      summary: Chat completion using OpenAI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        enum: [user, assistant, system]
+                      content:
+                        type: string
+              required: [messages]
+      responses:
+        '200':
+          description: Chat completion response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reply:
+                    type: string
+
+  /text/generation:
+    post:
+      summary: Generate text from prompt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                max_tokens:
+                  type: integer
+                temperature:
+                  type: number
+              required: [prompt]
+      responses:
+        '200':
+          description: Generated text
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+
+  /recommendations/products:
+    post:
+      summary: Get product recommendations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRecommendationRequest'
+      responses:
+        '200':
+          description: Product recommendations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recommendations:
+                    type: array
+                    items:
+                      type: string
+
+  /recommendations/content:
+    post:
+      summary: Get content recommendations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentRecommendationRequest'
+      responses:
+        '200':
+          description: Content recommendations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recommendations:
+                    type: array
+                    items:
+                      type: string
+
+  /recommendations/personalized:
+    post:
+      summary: Get personalized recommendations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonalizedRecommendationRequest'
+      responses:
+        '200':
+          description: Personalized recommendations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recommendations:
+                    type: array
+                    items:
+                      type: string
+
+components:
+  schemas:
+    UserProfile:
+      type: object
+      properties:
+        user_id:
+          type: string
+        preferences:
+          type: object
+          additionalProperties: true
+        history:
+          type: array
+          items:
+            type: string
+        interests:
+          type: array
+          items:
+            type: string
+        age:
+          type: integer
+        location:
+          type: string
+
+    ProductRecommendationRequest:
+      type: object
+      properties:
+        user_profile:
+          $ref: '#/components/schemas/UserProfile'
+        category:
+          type: string
+        max_results:
+          type: integer
+        budget:
+          type: number
+      required: [user_profile, category]
+
+    ContentRecommendationRequest:
+      type: object
+      properties:
+        user_profile:
+          $ref: '#/components/schemas/UserProfile'
+        content_type:
+          type: string
+        max_results:
+          type: integer
+        mood:
+          type: string
+      required: [user_profile, content_type]
+
+    PersonalizedRecommendationRequest:
+      type: object
+      properties:
+        user_profile:
+          $ref: '#/components/schemas/UserProfile'
+        context:
+          type: string
+        max_results:
+          type: integer
+      required: [user_profile, context]
