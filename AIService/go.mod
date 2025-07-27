@@ -1,6 +1,8 @@
 module openai-integration-service
 
-go 1.21
+go 1.23.0
+
+toolchain go1.24.0
 
 require github.com/gorilla/mux v1.8.1
 
@@ -28,6 +30,7 @@ require (
 	golang.org/x/arch v0.8.0 // indirect
 	golang.org/x/crypto v0.23.0 // indirect
 	golang.org/x/net v0.25.0 // indirect
+	golang.org/x/oauth2 v0.30.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
 	google.golang.org/protobuf v1.34.1 // indirect
