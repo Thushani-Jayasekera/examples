@@ -31,5 +31,5 @@ endpoints:
 dependencies:
     connectionReferences:
     - name: orglevelconnection
-      resourceRef: choreo:///thushani/eg/openaiapi-dev-svc/1.0.0/ORGANIZATION
+      resourceRef: service:/eg/openaiapi-dev-svc/1.0.0/proxy/ORGANIZATION
 
